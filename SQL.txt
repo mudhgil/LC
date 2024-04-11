@@ -1,0 +1,82 @@
+select * from cd.facilities
+select name, membercost from cd.facilities
+select name from cd.facilities where membercost > 0
+select facid, name, membercost, monthlymaintenance from cd.facilities where (membercost < monthlymaintenance/50 and membercost>0)
+select * from cd.facilities where name like '%Tennis%'
+select * from cd.facilities where facid in (1,5) 
+
+select name, case when(monthlymaintenance>100) then
+                'expensive'
+                else
+                'cheap'
+                end as rate
+from cd.facilities
+
+select memid, surname, firstname, joindate from cd.members 
+where joindate>='2012/09/01'
+
+select distinct surname from cd.members order by surname limit 10
+
+select surname from cd.members
+UNION
+select name from cd.facilities
+
+select max(joindate) from cd.members 
+
+select firstname, surname, joindate from cd.facilities 
+where joindate = (select max(joindate) from cd.members)
+
+
+------------------------------------------------------------------
+
+select bks.starttime 
+       from cd.bookings bks
+       inner join cd.members mem
+       on mem.memid = bks.memid
+where mem.surname = 'Farell'
+and mem.firstname = 'David'
+
+select bks.starttime, facs.name as name
+        from cd.bookings bks
+        inner join cd.facilities facs
+        on bks.facid = facs.facid
+where facs.name in ('Tennis Court 1', 'Tennis Court 2') and
+        bks.starttime >= '2012-09-01' and
+        bks.starttime <= '2012-09-22'
+Order by bks.starttime
+
+select distinct recs.firstname, recs.surname as surname
+        from cd.members as mem
+        inner join cd.members recs
+        on recs.memid = mem.recommendedby
+order by surname, firstname
+
+select mem.firstname, mem.surname, recs.firstname, recs.surname
+                from cd.members mem
+                left outer join cd.members recs
+                on recs.memid = mem.recommendedby
+order by surname, firstname
+
+select distinct mem.firstname || '' || mems.surname as member,  facs.name as facility
+        from cd.members mems
+        inner join cd.bookings bks
+                on mems.memid = bks.memid
+        inner join cd.facilities facs
+                on bks.facid = facs.facid
+        where
+                facs.name in ('Tennis Court 2', 'Tennis Court 1')
+order by member, facility
+
+
+select mem.firstname || ' '|| mem.surname as member, fac.name, fac.membercost, fac.guestcost
+        from cd.members mem
+        inner join cd.bookings bks
+                on memid.bks = memid.
+
+
+
+
+
+
+
+
