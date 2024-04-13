@@ -204,14 +204,30 @@
 // }
 // console.log(ksum([3,1,3,4,3], k = 6))
 
-const avg = (nums, k) => {
-    let maxSum = nums.slice(0, k).reduce((acc, curr) => acc + curr, 0);
-    let currSum = maxSum;
-    for (let i = k; i < nums.length; i++) {
-      currSum += nums[i] - nums[i - k];
-      maxSum = Math.max(currSum, maxSum);
-    }
-    return maxSum/k;
-  };
+// const avg = (nums, k) => {
+//     let maxSum = nums.slice(0, k).reduce((acc, curr) => acc + curr, 0);
+//     let currSum = maxSum;
+//     for (let i = k; i < nums.length; i++) {
+//       currSum += nums[i] - nums[i - k];
+//       maxSum = Math.max(currSum, maxSum);
+//     }
+//     return maxSum/k;
+//   };
   
-  console.log(avg([1, 12, -5, -6, 50, 3], 4)); // Output: 52
+//   console.log(avg([1, 12, -5, -6, 50, 3], 4)); // Output: 52
+
+const vowelsub = (s, k) =>{
+  var l = 0
+  var r = 0
+  var count = 0
+  for (let r = 0; i<s.length; i++){
+    if ( s[r] in 'aeiou'){
+      count += 1
+    }
+    else if (k<0 && s[l] in 'aeiou'){
+      k += 1
+    }
+    
+  }
+  return result
+}
