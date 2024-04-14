@@ -216,18 +216,37 @@
   
 //   console.log(avg([1, 12, -5, -6, 50, 3], 4)); // Output: 52
 
-const vowelsub = (s, k) =>{
-  var l = 0
-  var r = 0
-  var count = 0
-  for (let r = 0; i<s.length; i++){
-    if ( s[r] in 'aeiou'){
-      count += 1
-    }
-    else if (k<0 && s[l] in 'aeiou'){
-      k += 1
-    }
+// const vowelsub = (s, k) =>{
+//   var l = 0
+//   var r = 0
+//   var count = 0
+//   for (let r = 0; i<s.length; i++){
+//     if ( s[r] in 'aeiou'){
+//       count += 1
+//     }
+//     else if (k<0 && s[l] in 'aeiou'){
+//       k += 1
+//     }
     
+//   }
+//   return result
+// }
+
+const destroy = (asteroids) =>{
+  let s = []
+  for (let a in asteroids){
+    while (s && s[s.length-1]>0 && a<0){
+      if (s[s.length-1] + a >0){
+        s.pop()
+      }else if (s[-1] + a<0){
+        break
+      }else{
+        s.pop()
+        break
+      }
+      s.push(a)
+    }
+    return s
   }
-  return result
 }
+console.log(destroy([10,5,-2]))
